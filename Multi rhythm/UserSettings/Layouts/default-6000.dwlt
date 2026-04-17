@@ -322,7 +322,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_LastSelectedObjectID:
-    m_Data: 43810
+    m_Data: 0
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1269,13 +1269,11 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs:
-      - m_Data: 43810
+      m_SelectedIDs: []
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
       - m_Data: -1342
-      - m_Data: 50602
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1398,7 +1396,7 @@ MonoBehaviour:
       height: 723.58655
     m_MinimalGUI: 1
   m_defaultScale: 0.3761574
-  m_LastWindowPixelSize: {x: 1016.5, y: 432.5}
+  m_LastWindowPixelSize: {x: 813.2, y: 346}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -1479,11 +1477,6 @@ MonoBehaviour:
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 50752
-    - m_Data: 51062
-    - m_Data: 51162
-    - m_Data: 51164
-    - m_Data: 1000000000
-    - m_Data: 2147483647
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
