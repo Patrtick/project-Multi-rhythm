@@ -341,17 +341,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBfsChaser2D
   grid: {fileID: 817843330}
   player: {fileID: 1985420549}
-  detectionRadius: 6
-  repathIntervalSeconds: 2
+  detectionRadius: 10
+  repathIntervalSeconds: 0.5
   moveSpeed: 3
   cellArrivalDistance: 0.05
-  bulletMask:
-    serializedVersion: 2
-    m_Bits: 64
-  bulletCheckInset: 0.05
   playerTag: Player
   bulletTag: Enemy
-  drawPathGizmos: 1
+  dieToBullets: 0
+  drawPathGizmos: 0
 --- !u!1 &446137972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GridGraph2D
   width: 200
   height: 120
-  cellSize: 1
+  cellSize: 0.5
   gridStart: {x: -50, y: -50}
   wallMask:
     serializedVersion: 2

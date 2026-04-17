@@ -16,13 +16,10 @@ public class EnemyBfsChaser2D : MonoBehaviour
     [Min(0.01f)] [SerializeField] private float moveSpeed = 3f;
     [Min(0.001f)] [SerializeField] private float cellArrivalDistance = 0.05f;
 
-    [Header("Safety (avoid bullets)")]
-    [SerializeField] private LayerMask bulletMask;
-    [Range(0f, 0.49f)] [SerializeField] private float bulletCheckInset = 0.05f;
-
     [Header("Tags")]
     [SerializeField] private string playerTag = "Player";
     [SerializeField] private string bulletTag = "Enemy";
+    [SerializeField] private bool dieToBullets = true;
 
     [Header("Debug")]
     [SerializeField] private bool drawPathGizmos = true;
@@ -90,7 +87,7 @@ public class EnemyBfsChaser2D : MonoBehaviour
         path.Clear();
         pathIndex = 0;
 
-        if (BfsPathfinder2D.TryFindPath(grid, start, goal, path, bulletMask, bulletCheckInset))
+        if (BfsPathfinder2D.TryFindPath(grid, start, goal, path))
         {
             if (path.Count > 0 && path[0] == start)
                 pathIndex = 1;
@@ -106,7 +103,7 @@ public class EnemyBfsChaser2D : MonoBehaviour
             return;
         }
 
-        if (other.CompareTag(bulletTag))
+        if (dieToBullets && !string.IsNullOrEmpty(bulletTag) && other.CompareTag(bulletTag))
         {
             Destroy(gameObject);
         }
