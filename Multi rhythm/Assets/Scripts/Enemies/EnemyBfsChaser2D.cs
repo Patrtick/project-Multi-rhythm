@@ -120,7 +120,7 @@ public class EnemyBfsChaser2D : MonoBehaviour
         if (path == null || path.Count == 0) return;
         Gizmos.color = new Color(0.1f, 1f, 0.1f, 0.9f);
 
-        Vector3 prev = transform.position;
+        var prev = transform.position;
         for (int i = pathIndex; i < path.Count; i++)
         {
             var p = (Vector3)grid.CellToWorldCenter(path[i]);
