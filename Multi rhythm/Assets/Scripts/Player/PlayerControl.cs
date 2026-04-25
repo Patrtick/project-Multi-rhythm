@@ -54,22 +54,11 @@ public class PlayerControl : MonoBehaviour
         scale.x = Mathf.Abs(scale.x);
         scale.y = Mathf.Abs(scale.y);
 
-        if (gravityDirection == Vector2.down)
-        {
-            scale.y = 1;
-        }
-        else if (gravityDirection == Vector2.up)
-        {
-            scale.y = -1;
-        }
-        else if (gravityDirection == Vector2.left)
-        {
-            scale.x = -1;
-        }
-        else if (gravityDirection == Vector2.right)
-        {
-            scale.x = 1;
-        }
+        if (gravityDirection == Vector2.up)
+            scale.y *= -1f;
+
+        if (gravityDirection == Vector2.left)
+            scale.x *= -1f;
 
         transform.localScale = scale;
     }

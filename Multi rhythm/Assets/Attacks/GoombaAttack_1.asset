@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6702e0a0ef7c84f86c7a078471bd05, type: 3}
   m_Name: GoombaAttack_1
   m_EditorClassIdentifier: Assembly-CSharp::GoombaAttack
-  duration: 15
+  duration: 10
   enemyPrefab: {fileID: 6633198063493347698, guid: fa1e6c86e62cd3042a2ce0b75dc7d707, type: 3}
   speed: 2

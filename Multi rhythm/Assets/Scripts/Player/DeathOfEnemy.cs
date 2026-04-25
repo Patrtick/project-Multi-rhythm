@@ -7,12 +7,12 @@ public class DeathOfEnemy : MonoBehaviour
     [SerializeField] private bool pauseTimeOnDeath = true;
 
     [Header("Animator")]
-    [SerializeField] private Animator animator; 
     [SerializeField] private string deadBoolName = "Dead";
 
     [Header("Что убивает игрока")]
     [SerializeField] private string enemyAttackTag = "Enemy";
 
+    private Animator animator;
     private bool isDead;
 
     private void Awake()
