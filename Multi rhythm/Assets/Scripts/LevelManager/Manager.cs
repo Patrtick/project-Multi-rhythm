@@ -4,8 +4,8 @@ using System.Linq;
 
 public class Manager : MonoBehaviour
 {
-    public LevelData level;
-    public Transform[] spawnPoints;
+    [SerializeField] private LevelData level;
+    [SerializeField] private Transform[] spawnPoints;
 
     private void Start()
     {

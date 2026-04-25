@@ -4,10 +4,10 @@ using System.Collections;
 [CreateAssetMenu(menuName = "BulletHell/Attacks/Pipe")]
 public class PipeAttack : AttackPattern
 {
-    public string pipeRootName;
-    public float raiseSpeed = 2f;
-    public float maxHeight = 3f;
-    public float warningTime = 2f;
+    [SerializeField] private string pipeRootName;
+    [SerializeField] private float raiseSpeed = 2f;
+    [SerializeField] private float maxHeight = 3f;
+    [SerializeField] private float warningTime = 2f;
 
     public override IEnumerator Execute(Transform origin)
     {

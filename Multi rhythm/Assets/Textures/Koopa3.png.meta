@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 87b089c6605ea7e46a39a6e28e47711e
+guid: 9aebee084f4badb4eb6cb2600c101d9b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7912924055995117553
-    second: RedCircle_0
+      213: -5551440543391802410
+    second: Koopa3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RedCircle_0
+      name: Koopa3_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 564
-        height: 568
+        width: 16
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ff6b34218a50dd60800000000000000
-      internalID: 7912924055995117553
+      spriteID: 6db1e631d3255f2b0800000000000000
+      internalID: -5551440543391802410
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      RedCircle_0: 7912924055995117553
+      Koopa3_0: -5551440543391802410
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

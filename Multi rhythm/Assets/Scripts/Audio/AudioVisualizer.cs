@@ -5,10 +5,11 @@ using UnityEngine;
 public class AudioVisualizer : MonoBehaviour
 {
     [SerializeField] private List<GameObject> backgrounds = new List<GameObject>();
+    [SerializeField] private float sensitivity = 0.05f;
     private List<Vector3> initialScales = new List<Vector3>();
     private AudioSource audioSource;
     private float[] samples = new float[512];
-    [SerializeField] private float sensitivity = 0.05f;
+   
     void Start()
     {
         foreach (var background in backgrounds)
