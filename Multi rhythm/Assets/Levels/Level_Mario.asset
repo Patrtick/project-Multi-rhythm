@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Level_Mario
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   steps:
-  - attack: {fileID: 11400000, guid: 81e9f75c21058814887c1510788fd09c, type: 2}
-    delayBefore: 1
-  - attack: {fileID: 11400000, guid: 81e9f75c21058814887c1510788fd09c, type: 2}
-    delayBefore: 2
-  - attack: {fileID: 11400000, guid: 7125184767c92e642a75f72be7886333, type: 2}
-    delayBefore: 3
+  - attack: {fileID: 11400000, guid: e1133dff9847430409ff569f88c648a1, type: 2}
+    delayBefore: 0
+    spawnPointId: Left Edge
+  - attack: {fileID: 11400000, guid: aea1c01cac1ef7048bd89924f5e536e8, type: 2}
+    delayBefore: 5
+    spawnPointId: Center
+  - attack: {fileID: 11400000, guid: 70eee7312bb1ab24197ee1d12f5eb2fc, type: 2}
+    delayBefore: 5
+    spawnPointId: Center

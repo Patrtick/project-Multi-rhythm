@@ -1,5 +1,5 @@
 using UnityEngine;
-public class KillZone2D : MonoBehaviour
+public class KillZone : MonoBehaviour
 {
     [SerializeField] private string bulletTag = "Enemy";
     private void OnTriggerExit2D(Collider2D other)

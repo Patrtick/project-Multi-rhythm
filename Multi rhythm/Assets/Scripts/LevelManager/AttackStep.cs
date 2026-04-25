@@ -5,4 +5,5 @@ public class AttackStep
 {
     public AttackPattern attack;
     public float delayBefore;
+    public string spawnPointId;
 }

@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class Manager : MonoBehaviour
 {
     public LevelData level;
-    public Transform attackOrigin;
+    public Transform[] spawnPoints;
 
     private void Start()
     {
@@ -15,9 +16,18 @@ public class Manager : MonoBehaviour
     {
         foreach (var step in level.steps)
         {
-            yield return new WaitForSeconds(step.delayBefore);
-
-            yield return StartCoroutine(step.attack.Execute(attackOrigin));
+            StartCoroutine(LaunchAttackAfterDelay(step));
         }
+
+        yield break;
+    }
+
+    IEnumerator LaunchAttackAfterDelay(AttackStep step)
+    {
+        yield return new WaitForSeconds(step.delayBefore);
+
+        var origin = spawnPoints.First(x => x.name == step.spawnPointId);
+
+        yield return StartCoroutine(step.attack.Execute(origin));
     }
 }
