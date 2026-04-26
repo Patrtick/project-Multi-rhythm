@@ -14,6 +14,7 @@ public class DeathOfEnemy : MonoBehaviour
 
     private Animator animator;
     private bool isDead;
+    private bool ignoreTriggerDeath;
 
     private void Awake()
     {
@@ -25,10 +26,16 @@ public class DeathOfEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (ignoreTriggerDeath) return;
         if (isDead) return;
         if (!other.CompareTag(enemyAttackTag)) return;
 
         Die();
+    }
+
+    public void SetIgnoreTriggerDeath(bool shouldIgnore)
+    {
+        ignoreTriggerDeath = shouldIgnore;
     }
 
     public void Die()

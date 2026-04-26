@@ -5920,6 +5920,7 @@ GameObject:
   - component: {fileID: 1985420548}
   - component: {fileID: 1985420545}
   - component: {fileID: 1985420552}
+  - component: {fileID: 1985420555}
   - component: {fileID: 1985420550}
   - component: {fileID: 1985420553}
   - component: {fileID: 1985420554}
@@ -6142,6 +6143,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1985420555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985420544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a2ed9a9cd296d4b9150552920023da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MarioDeathSequence
+  enemyAttackTag: Enemy
+  jumpForce: 8
+  deathGravityScale: 3
+  delayBeforeDeathWindow: 1.2
+  deadBoolName: MarioDeath
 --- !u!1 &1994380977
 GameObject:
   m_ObjectHideFlags: 0
