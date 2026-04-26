@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b586b6af9e44010449c59ac1816cc7d6, type: 3}
+  m_Name: KoopaShellAttack
+  m_EditorClassIdentifier: Assembly-CSharp::KoopaShellAttack
+  duration: 0
+  koopaPrefab: {fileID: 9125354186863129375, guid: 5cc8214b64eb4e140ae6dd294b44896a, type: 3}
+  koopaShellPrefab: {fileID: 3724189505456635005, guid: e4fbb9dadecbf914bb1bf787e4de628d, type: 3}
+  walkSpeed: 3
+  shellSpeedMultiplier: 2
+  startMovingRight: 1
+  walkDuration: 6
+  shellDuration: 5
