@@ -46,5 +46,6 @@ public class DeathOfEnemy : MonoBehaviour
 
         if (deathWindow != null)
             deathWindow.SetActive(true);
+        Time.timeScale = 0f;
     }
 }
