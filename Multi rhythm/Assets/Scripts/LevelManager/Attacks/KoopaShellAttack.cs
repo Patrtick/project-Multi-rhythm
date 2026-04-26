@@ -4,16 +4,16 @@ using System.Collections;
 [CreateAssetMenu(menuName = "BulletHell/Attacks/Koopa Shell")]
 public class KoopaShellAttack : AttackPattern
 {
-    [Header("�������")]
+    [Header("Префабы")]
     [SerializeField] private GameObject koopaPrefab;
     [SerializeField] private GameObject koopaShellPrefab;
 
-    [Header("�����������")]
+    [Header("Времена")]
     [SerializeField] private float walkSpeed = 1.8f;
     [SerializeField] private float shellSpeedMultiplier = 1.35f;
     [SerializeField] private bool startMovingRight = true;
 
-    [Header("�����")]
+    [Header("Мувмент")]
     [SerializeField] private float walkDuration = 1.5f;
     [SerializeField] private float shellDuration = 2f;
 
@@ -25,6 +25,12 @@ public class KoopaShellAttack : AttackPattern
         var directionX = startMovingRight ? 1f : -1f;
 
         var koopa = Instantiate(koopaPrefab, origin.position, Quaternion.identity);
+        if (directionX < 0f)
+        {
+            var scale = koopa.transform.localScale;
+            scale.x *= -1f;
+            koopa.transform.localScale = scale;
+        }
         var koopaRb = koopa.GetComponent<Rigidbody2D>();
 
         yield return MoveHorizontalForTime(koopa.transform, koopaRb, directionX, walkSpeed, walkDuration);
