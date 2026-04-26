@@ -4,16 +4,16 @@ using System.Collections;
 [CreateAssetMenu(menuName = "BulletHell/Attacks/Koopa Shell")]
 public class KoopaShellAttack : AttackPattern
 {
-    [Header("Префабы")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private GameObject koopaPrefab;
     [SerializeField] private GameObject koopaShellPrefab;
 
-    [Header("Перемещение")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private float walkSpeed = 1.8f;
     [SerializeField] private float shellSpeedMultiplier = 1.35f;
     [SerializeField] private bool startMovingRight = true;
 
-    [Header("Время")]
+    [Header("пїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private float walkDuration = 1.5f;
     [SerializeField] private float shellDuration = 2f;
 

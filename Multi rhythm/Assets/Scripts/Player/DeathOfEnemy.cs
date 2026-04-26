@@ -4,7 +4,6 @@ public class DeathOfEnemy : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private GameObject deathWindow;
-    [SerializeField] private bool pauseTimeOnDeath = true;
 
     [Header("Animator")]
     [SerializeField] private string deadBoolName = "Dead";
@@ -20,8 +19,7 @@ public class DeathOfEnemy : MonoBehaviour
     {
         if (deathWindow != null)
             deathWindow.SetActive(false);
-        if (animator == null)
-            animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -48,8 +46,5 @@ public class DeathOfEnemy : MonoBehaviour
 
         if (deathWindow != null)
             deathWindow.SetActive(true);
-
-        if (pauseTimeOnDeath)
-            Time.timeScale = 0f;
     }
 }

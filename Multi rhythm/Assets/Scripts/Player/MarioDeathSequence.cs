@@ -15,6 +15,7 @@ public class MarioDeathSequence : MonoBehaviour
     [SerializeField] private string deadBoolName = "Dead";
 
     private Rigidbody2D rb;
+    private Animator animator;
     private Collider2D[] colliders;
     private PlayerControl playerControl;
     private DeathOfEnemy deathOfEnemy;
@@ -23,6 +24,7 @@ public class MarioDeathSequence : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         colliders = GetComponents<Collider2D>();
         playerControl = GetComponent<PlayerControl>();
         deathOfEnemy = GetComponent<DeathOfEnemy>();
@@ -42,7 +44,10 @@ public class MarioDeathSequence : MonoBehaviour
     {
         isDying = true;
         playerControl.enabled = false;
-            
+
+        if (animator != null)
+            animator.SetBool(deadBoolName, true);
+
         for (int i = 0; i < colliders.Length; i++)
         {
             colliders[i].enabled = false;

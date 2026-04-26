@@ -6060,6 +6060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathOfEnemy
   deathWindow: {fileID: 219283160}
   pauseTimeOnDeath: 1
+  pauseDelaySeconds: 0.6
   deadBoolName: Dead
   enemyAttackTag: Enemy
 --- !u!60 &1985420553
@@ -6159,7 +6160,7 @@ MonoBehaviour:
   jumpForce: 8
   deathGravityScale: 3
   delayBeforeDeathWindow: 1.2
-  deadBoolName: MarioDeath
+  deadBoolName: Dead
 --- !u!1 &1994380977
 GameObject:
   m_ObjectHideFlags: 0
