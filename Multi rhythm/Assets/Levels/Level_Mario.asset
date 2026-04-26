@@ -24,4 +24,4 @@ MonoBehaviour:
     spawnPointId: Center
   - attack: {fileID: 11400000, guid: 6201baf24dc01534e86123cc5cca22b5, type: 2}
     delayBefore: 5
-    spawnPointId: Left Edge
+    spawnPointId: Right Edge

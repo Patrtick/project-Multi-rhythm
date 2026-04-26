@@ -4,6 +4,7 @@ using System.Collections;
 [CreateAssetMenu(menuName = "BulletHell/Attacks/Pipe")]
 public class PipeAttack : AttackPattern
 {
+    [SerializeField] private float duration = 10f;
     [SerializeField] private string pipeRootName;
     [SerializeField] private float raiseSpeed = 2f;
     [SerializeField] private float maxHeight = 3f;

@@ -4,6 +4,7 @@ using System.Collections;
 [CreateAssetMenu(menuName = "BulletHell/Attacks/Goomba")]
 public class GoombaAttack : AttackPattern
 {
+    [SerializeField] private float duration = 10f;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private float speed = 3f;
 

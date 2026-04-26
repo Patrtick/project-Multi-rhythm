@@ -2280,6 +2280,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 1975159949}
   - {fileID: 1648431852}
+  - {fileID: 860962978}
 --- !u!4 &766310339
 Transform:
   m_ObjectHideFlags: 0
@@ -2519,6 +2520,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &860962977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860962978}
+  m_Layer: 0
+  m_Name: Right Edge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &860962978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860962977}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.74, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2147136771}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &934515877
 GameObject:
   m_ObjectHideFlags: 0
@@ -6059,8 +6091,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathOfEnemy
   deathWindow: {fileID: 219283160}
-  pauseTimeOnDeath: 1
-  pauseDelaySeconds: 0.6
   deadBoolName: Dead
   enemyAttackTag: Enemy
 --- !u!60 &1985420553
@@ -6557,6 +6587,7 @@ Transform:
   m_Children:
   - {fileID: 1975159949}
   - {fileID: 1648431852}
+  - {fileID: 860962978}
   m_Father: {fileID: 2035235145}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
