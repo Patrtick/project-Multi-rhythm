@@ -25,3 +25,6 @@ MonoBehaviour:
   - attack: {fileID: 11400000, guid: 6201baf24dc01534e86123cc5cca22b5, type: 2}
     delayBefore: 5
     spawnPointId: Right Edge
+  - attack: {fileID: 11400000, guid: a532fdfd4863f414cbdc7732cbd95809, type: 2}
+    delayBefore: 7
+    spawnPointId: Right Edge

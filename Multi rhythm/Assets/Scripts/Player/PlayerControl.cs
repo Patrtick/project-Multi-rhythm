@@ -51,15 +51,28 @@ public class PlayerControl : MonoBehaviour
     private void RotateToGravity()
     {
         var scale = transform.localScale;
+        var absX = Mathf.Abs(scale.x);
+        var absY = Mathf.Abs(scale.y);
+        var isUpsideDown = scale.y < 0f;
 
-        scale.x = Mathf.Abs(scale.x);
-        scale.y = Mathf.Abs(scale.y);
-
-        if (gravityDirection == Vector2.up)
-            scale.y *= -1f;
-
-        if (gravityDirection == Vector2.left)
-            scale.x *= -1f;
+        if (gravityDirection == Vector2.down)
+        {
+            scale.y = absY;
+        }
+        else if (gravityDirection == Vector2.up)
+        {
+            scale.y = -absY;
+        }
+        else if (gravityDirection == Vector2.left)
+        {
+            scale.x = -absX;
+            scale.y = isUpsideDown ? -absY : absY;
+        }
+        else if (gravityDirection == Vector2.right)
+        {
+            scale.x = absX;
+            scale.y = isUpsideDown ? -absY : absY;
+        }
 
         transform.localScale = scale;
     }
