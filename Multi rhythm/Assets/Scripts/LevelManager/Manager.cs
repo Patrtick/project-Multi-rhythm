@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 public class Manager : MonoBehaviour
@@ -7,9 +8,35 @@ public class Manager : MonoBehaviour
     [SerializeField] private LevelData level;
     [SerializeField] private Transform[] spawnPoints;
 
+    private Dictionary<SpawnPosition, Transform> spawnMap;
+
+    private void Awake()
+    {
+        BuildSpawnMap();
+    }
+
     private void Start()
     {
         StartCoroutine(RunLevel());
+    }
+
+    private void BuildSpawnMap()
+    {
+        spawnMap = new Dictionary<SpawnPosition, Transform>();
+
+        foreach (SpawnPosition pos in System.Enum.GetValues(typeof(SpawnPosition)))
+        {
+            var point = spawnPoints.FirstOrDefault(p => p.name == pos.ToString());
+
+            if (point != null)
+            {
+                spawnMap[pos] = point;
+            }
+            else
+            {
+                Debug.LogWarning($"Точка спавна не найдена для: {pos}");
+            }
+        }
     }
 
     IEnumerator RunLevel()
@@ -26,8 +53,12 @@ public class Manager : MonoBehaviour
     {
         yield return new WaitForSeconds(step.delayBefore);
 
-        var origin = spawnPoints.First(x => x.name == step.spawnPointId);
-
-        yield return StartCoroutine(step.attack.Execute(origin));
+        foreach (var pos in step.spawnPosition)
+        {
+            if (spawnMap.TryGetValue(pos, out var origin))
+            {
+                StartCoroutine(step.attack.Execute(origin));
+            }
+        }
     }
 }

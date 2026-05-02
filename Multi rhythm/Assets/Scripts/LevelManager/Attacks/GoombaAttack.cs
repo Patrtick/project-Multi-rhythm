@@ -25,6 +25,7 @@ public class GoombaAttack : AttackPattern
         var rb = enemy.GetComponent<Rigidbody2D>();
         var animator = enemy.GetComponent<Animator>();
         var collider = enemy.GetComponent<PolygonCollider2D>();
+        var death = enemy.GetComponent<EnemyDeathByTime>();
 
         var timer = 0f;
         var lastChangeTime = -999f;
@@ -54,14 +55,7 @@ public class GoombaAttack : AttackPattern
             yield return null;              
         }
 
-        enemy.tag = "Untagged";
-        collider.enabled = false;
-        rb.linearVelocity = Vector2.zero;
-        rb.simulated = false;
-
-        animator.SetBool("Death", true);
-
-        yield return new WaitForSeconds(1.5f);
-        Object.Destroy(enemy);
+        if (death != null)
+            death.Die();
     }
 }

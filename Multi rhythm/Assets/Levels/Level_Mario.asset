@@ -15,16 +15,13 @@ MonoBehaviour:
   steps:
   - attack: {fileID: 11400000, guid: e1133dff9847430409ff569f88c648a1, type: 2}
     delayBefore: 0
-    spawnPointId: Left Edge
+    spawnPosition: 02000000
   - attack: {fileID: 11400000, guid: aea1c01cac1ef7048bd89924f5e536e8, type: 2}
     delayBefore: 5
-    spawnPointId: Center
+    spawnPosition: 10000000
   - attack: {fileID: 11400000, guid: 70eee7312bb1ab24197ee1d12f5eb2fc, type: 2}
     delayBefore: 5
-    spawnPointId: Center
+    spawnPosition: 10000000
   - attack: {fileID: 11400000, guid: 6201baf24dc01534e86123cc5cca22b5, type: 2}
     delayBefore: 5
-    spawnPointId: Right Edge
-  - attack: {fileID: 11400000, guid: a532fdfd4863f414cbdc7732cbd95809, type: 2}
-    delayBefore: 7
-    spawnPointId: Right Edge
+    spawnPosition: 04000000
