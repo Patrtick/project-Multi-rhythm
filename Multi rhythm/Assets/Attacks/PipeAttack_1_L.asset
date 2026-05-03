@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c0608fbaf067dd44a9691a308c06c66, type: 3}
-  m_Name: PipeAttack_2
+  m_Name: PipeAttack_1_L
   m_EditorClassIdentifier: Assembly-CSharp::PipeAttack
-  duration: 10
-  pipeRootName: PipeRight
+  pipeRootName: PipeLeft
   raiseSpeed: 2
   maxHeight: 3
   warningTime: 2
+  plantAttack: 1
+  plantRiseSpeed: 2
+  plantMaxHeight: 1.5
+  plantStayTime: 1.5
+  duration: 10

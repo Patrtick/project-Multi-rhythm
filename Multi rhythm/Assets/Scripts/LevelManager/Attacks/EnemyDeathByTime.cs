@@ -28,7 +28,6 @@ public class EnemyDeathByTime : MonoBehaviour
 
     private IEnumerator DeathRoutine()
     {
-        gameObject.tag = "Untagged";
 
         if (col != null)
             col.enabled = false;

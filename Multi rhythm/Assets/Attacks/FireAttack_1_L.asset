@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6978710eab11e04458952141d8b895e3, type: 3}
+  m_Name: FireAttack_1_L
+  m_EditorClassIdentifier: Assembly-CSharp::FireStickAttack
+  rootName: FireLeft
+  firePrefab: {fileID: 5655410812053228092, guid: c59d9043627139f4f9da3e858771f76a, type: 3}
+  maxSegments: 10
+  spawnDelay: 0.5
+  segmentSpacing: 0.7
+  rotationSpeed: 120
+  duration: 10

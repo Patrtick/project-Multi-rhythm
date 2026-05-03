@@ -4,11 +4,19 @@ using System.Collections;
 [CreateAssetMenu(menuName = "BulletHell/Attacks/Pipe")]
 public class PipeAttack : AttackPattern
 {
-    [SerializeField] private float duration = 10f;
     [SerializeField] private string pipeRootName;
     [SerializeField] private float raiseSpeed = 2f;
     [SerializeField] private float maxHeight = 3f;
     [SerializeField] private float warningTime = 2f;
+
+    [Header("Настройки растения")]
+    [SerializeField] private bool plantAttack = false;
+    [SerializeField] private float plantRiseSpeed = 2f;
+    [SerializeField] private float plantMaxHeight = 1.5f;
+    [SerializeField] private float plantStayTime = 1.5f;
+
+    [Header("Продолжительность, которая работает при отсутствии включённой атаки растения")]
+    [SerializeField] private float duration = 10f;
 
     public override IEnumerator Execute(Transform origin)
     {
@@ -22,6 +30,19 @@ public class PipeAttack : AttackPattern
         if (top == null || body == null || warning == null)
             yield break;
 
+        Transform plant = null;
+        var plantStartPos = Vector3.zero;
+
+        if (plantAttack)
+        {
+            plant = top.Find("Plant");
+            if (plant != null)
+            {
+                plant.gameObject.SetActive(false);
+                plantStartPos = plant.localPosition;
+            }
+        }
+
         root.transform.position = origin.position;
 
         warning.SetActive(true);
@@ -31,10 +52,9 @@ public class PipeAttack : AttackPattern
         var startTopPos = top.localPosition;
         var startBodyScaleY = body.localScale.y;
 
-        var timer = 0f;
         var height = 0f;
 
-        while (timer < duration)
+        while (height < maxHeight)
         {
             height += raiseSpeed * Time.deltaTime;
             height = Mathf.Clamp(height, 0f, maxHeight);
@@ -48,8 +68,38 @@ public class PipeAttack : AttackPattern
                 body.localScale.z
             );
 
-            timer += Time.deltaTime;
             yield return null;
+        }
+
+        if (!plantAttack)
+            yield return new WaitForSeconds(duration);
+
+        if (plantAttack && plant != null)
+        {
+            plant.gameObject.SetActive(true);
+
+            var plantHeight = 0f;
+
+            while (plantHeight < plantMaxHeight)
+            {
+                plantHeight += plantRiseSpeed * Time.deltaTime;
+
+                plant.localPosition = plantStartPos + Vector3.up * plantHeight;
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(plantStayTime);
+
+            while (plantHeight > 0f)
+            {
+                plantHeight -= plantRiseSpeed * Time.deltaTime;
+
+                plant.localPosition = plantStartPos + Vector3.up * plantHeight;
+                yield return null;
+            }
+
+            plant.localPosition = plantStartPos;
+            plant.gameObject.SetActive(false);           
         }
 
         while (height > 0f)
