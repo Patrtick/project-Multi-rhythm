@@ -3568,6 +3568,7 @@ GameObject:
   - component: {fileID: 1108168433}
   - component: {fileID: 1108168436}
   - component: {fileID: 1108168437}
+  - component: {fileID: 1108168438}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Enemy
@@ -3744,6 +3745,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1108168438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108168432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a688754edb8d30944a6e05e3f5d39c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KillPlayer
 --- !u!1 &1124322816
 GameObject:
   m_ObjectHideFlags: 0
@@ -5404,6 +5417,7 @@ GameObject:
   - component: {fileID: 1746609930}
   - component: {fileID: 1746609932}
   - component: {fileID: 1746609933}
+  - component: {fileID: 1746609934}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Enemy
@@ -5580,6 +5594,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1746609934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746609928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a688754edb8d30944a6e05e3f5d39c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KillPlayer
 --- !u!1 &1748393083
 GameObject:
   m_ObjectHideFlags: 0
