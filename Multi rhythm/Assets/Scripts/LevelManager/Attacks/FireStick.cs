@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 [CreateAssetMenu(menuName = "BulletHell/Attacks/FireStick")]
 public class FireStickAttack : AttackPattern
@@ -23,18 +24,30 @@ public class FireStickAttack : AttackPattern
         if (root == null || firePrefab == null) yield break;
         if (root.transform.childCount == 0) yield break;
 
+        var segmentPositionsTask = ComputeSegmentLocalPositionsAsync(maxSegments, segmentSpacing);
+
         var spawnParent = root.transform.GetChild(0);
 
         var pivot = new GameObject("FireStickPivot").transform;
         pivot.SetParent(spawnParent);
         pivot.localPosition = Vector3.zero;
 
-        var segments = new List<Transform>();
+        yield return new WaitUntil(() => segmentPositionsTask.IsCompleted);
+
+        if (segmentPositionsTask.IsFaulted)
+        {
+            Debug.LogException(segmentPositionsTask.Exception?.GetBaseException());
+            Destroy(pivot.gameObject);
+            yield break;
+        }
+
+        var localPositions = segmentPositionsTask.Result;
+        var segments = new List<Transform>(maxSegments);
 
         for (var i = 0; i < maxSegments; i++)
         {
             var seg = Instantiate(firePrefab, pivot);
-            seg.transform.localPosition = new Vector3(0f, segmentSpacing * i, 0f);
+            seg.transform.localPosition = localPositions[i];
             segments.Add(seg.transform);
 
             yield return WaitWithRotation(pivot, spawnDelay);
@@ -51,6 +64,17 @@ public class FireStickAttack : AttackPattern
         }
 
         Destroy(pivot.gameObject);
+    }
+
+    private static Task<Vector3[]> ComputeSegmentLocalPositionsAsync(int count, float spacing)
+    {
+        return Task.Run(() =>
+        {
+            var positions = new Vector3[count];
+            for (var i = 0; i < count; i++)
+                positions[i] = new Vector3(0f, spacing * i, 0f);
+            return positions;
+        });
     }
 
     private IEnumerator WaitWithRotation(Transform pivot, float time)
