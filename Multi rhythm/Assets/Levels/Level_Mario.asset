@@ -29,5 +29,5 @@ MonoBehaviour:
     delayBefore: 15
     spawnPosition: 01000000
   - attack: {fileID: 11400000, guid: ad3a96aeadd062042bb2f8a82c974d01, type: 2}
-    delayBefore: 15
+    delayBefore: 0
     spawnPosition: 10000000

@@ -18,6 +18,30 @@ public class PipeAttack : AttackPattern
     [Header("Продолжительность, которая работает при отсутствии включённой атаки растения")]
     [SerializeField] private float duration = 10f;
 
+    public override float Duration
+    {
+        get
+        {
+            var total = 0f;
+            total += warningTime;
+            total += maxHeight / raiseSpeed;
+
+            if (plantAttack)
+            {
+                total += plantMaxHeight / plantRiseSpeed;
+                total += plantStayTime;
+                total += plantMaxHeight / plantRiseSpeed;
+            }
+            else
+            {
+                total += duration;
+            }
+            total += maxHeight / raiseSpeed;
+
+            return total;
+        }
+    }
+
     public override IEnumerator Execute(Transform origin)
     {
         var root = GameObject.Find(pipeRootName);

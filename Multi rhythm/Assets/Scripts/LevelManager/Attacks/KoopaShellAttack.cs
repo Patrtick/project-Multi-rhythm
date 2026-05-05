@@ -17,6 +17,8 @@ public class KoopaShellAttack : AttackPattern
     [SerializeField] private float walkDuration = 1.5f;
     [SerializeField] private float shellDuration = 2f;
 
+    public override float Duration => walkDuration +shellDuration;
+
     public override IEnumerator Execute(Transform origin)
     {
         if (koopaPrefab == null || koopaShellPrefab == null)

@@ -18,74 +18,87 @@ public class FireStickAttack : AttackPattern
     [SerializeField] private float rotationSpeed = 120f;
     [SerializeField] private float duration = 5f;
 
+    public override float Duration =>
+    (maxSegments * spawnDelay) +
+    duration +
+    (maxSegments * spawnDelay);
+
     public override IEnumerator Execute(Transform origin)
     {
-        var root = GameObject.Find(rootName);
-        if (root == null || firePrefab == null) yield break;
-        if (root.transform.childCount == 0) yield break;
+        _ = ExecuteAsync(origin);
+        yield break;
+    }
 
-        var segmentPositionsTask = ComputeSegmentLocalPositionsAsync(maxSegments, segmentSpacing);
+    private async Task ExecuteAsync(Transform origin)
+    {
+        var root = GameObject.Find(rootName);
+        if (root == null || firePrefab == null)
+            return;
+
+        if (root.transform.childCount == 0)
+            return;
 
         var spawnParent = root.transform.GetChild(0);
 
-        var pivot = new GameObject("FireStickPivot").transform;
-        pivot.SetParent(spawnParent);
-        pivot.localPosition = Vector3.zero;
+        var stickPivot = new GameObject("FireStickPivot").transform;
+        stickPivot.SetParent(spawnParent);
+        stickPivot.localPosition = Vector3.zero;
 
-        yield return new WaitUntil(() => segmentPositionsTask.IsCompleted);
-
-        if (segmentPositionsTask.IsFaulted)
-        {
-            Debug.LogException(segmentPositionsTask.Exception?.GetBaseException());
-            Destroy(pivot.gameObject);
-            yield break;
-        }
-
-        var localPositions = segmentPositionsTask.Result;
         var segments = new List<Transform>(maxSegments);
 
-        for (var i = 0; i < maxSegments; i++)
-        {
-            var seg = Instantiate(firePrefab, pivot);
-            seg.transform.localPosition = localPositions[i];
-            segments.Add(seg.transform);
+        var spawnIndex = 0;
+        var nextSpawnTime = Time.time + spawnDelay;
 
-            yield return WaitWithRotation(pivot, spawnDelay);
+        var endTime = Time.time + duration;
+        var despawnStarted = false;
+        var nextDespawnTime = 0f;
+
+        while (true)
+        {
+            var now = Time.time;
+
+            stickPivot.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+
+            if (spawnIndex < maxSegments && now >= nextSpawnTime)
+            {
+                nextSpawnTime += spawnDelay;
+
+                var segment = Object.Instantiate(firePrefab, stickPivot);
+
+                segment.transform.localPosition = new Vector3(
+                    0f,
+                    segmentSpacing * spawnIndex,
+                    0f
+                );
+
+                segments.Add(segment.transform);
+                spawnIndex++;
+            }
+
+            if (!despawnStarted && spawnIndex >= maxSegments && now >= endTime)
+            {
+                despawnStarted = true;
+                nextDespawnTime = now + spawnDelay;
+            }
+
+            if (despawnStarted && segments.Count > 0 && now >= nextDespawnTime)
+            {
+                nextDespawnTime += spawnDelay;
+
+                var seg = segments[segments.Count - 1];
+
+                if (seg != null)
+                    Object.Destroy(seg.gameObject);
+
+                segments.RemoveAt(segments.Count - 1);
+            }
+
+            if (despawnStarted && segments.Count == 0)
+                break;
+
+            await Task.Yield();
         }
 
-        yield return WaitWithRotation(pivot, duration);
-
-        for (var i = segments.Count - 1; i >= 0; i--)
-        {
-            var seg = segments[i];
-            if (seg != null) Destroy(seg.gameObject);
-
-            yield return WaitWithRotation(pivot, spawnDelay);
-        }
-
-        Destroy(pivot.gameObject);
-    }
-
-    private static Task<Vector3[]> ComputeSegmentLocalPositionsAsync(int count, float spacing)
-    {
-        return Task.Run(() =>
-        {
-            var positions = new Vector3[count];
-            for (var i = 0; i < count; i++)
-                positions[i] = new Vector3(0f, spacing * i, 0f);
-            return positions;
-        });
-    }
-
-    private IEnumerator WaitWithRotation(Transform pivot, float time)
-    {
-        var t = 0f;
-        while (t < time)
-        {
-            var dt = Time.deltaTime;
-            pivot.Rotate(Vector3.forward, rotationSpeed * dt);
-            t += dt;
-            yield return null;
-        }
+        Object.Destroy(stickPivot.gameObject);
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +10,6 @@ public class Manager : MonoBehaviour
 
     private Dictionary<SpawnPosition, Transform> spawnMap;
 
-    private int totalAttacks;
-    private int completedAttacks;
-
-    public float Progress01 => totalAttacks > 0 ? Mathf.Clamp01((float)completedAttacks / totalAttacks) : 1f;
-
-    public event Action<float> OnProgressChanged;
-    public event Action OnLevelComplete;
-
     private void Awake()
     {
         BuildSpawnMap();
@@ -26,22 +17,6 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
-        if (level == null || level.steps == null)
-        {
-            Debug.LogError("Manager: не назначен LevelData или список steps пуст.");
-            return;
-        }
-
-        totalAttacks = CountPlannedAttacks();
-        completedAttacks = 0;
-        NotifyProgress();
-
-        if (totalAttacks == 0)
-        {
-            OnLevelComplete?.Invoke();
-            return;
-        }
-
         StartCoroutine(RunLevel());
     }
 
@@ -64,23 +39,6 @@ public class Manager : MonoBehaviour
         }
     }
 
-    private int CountPlannedAttacks()
-    {
-        var n = 0;
-        foreach (var step in level.steps)
-        {
-            if (step.attack == null || step.spawnPosition == null)
-                continue;
-            foreach (var pos in step.spawnPosition)
-            {
-                if (spawnMap.ContainsKey(pos))
-                    n++;
-            }
-        }
-
-        return n;
-    }
-
     IEnumerator RunLevel()
     {
         foreach (var step in level.steps)
@@ -95,31 +53,28 @@ public class Manager : MonoBehaviour
     {
         yield return new WaitForSeconds(step.delayBefore);
 
-        if (step.attack == null || step.spawnPosition == null)
-            yield break;
-
         foreach (var pos in step.spawnPosition)
         {
             if (spawnMap.TryGetValue(pos, out var origin))
             {
-                StartCoroutine(RunAttackTracked(step.attack, origin));
+                StartCoroutine(step.attack.Execute(origin));
             }
         }
     }
 
-    IEnumerator RunAttackTracked(AttackPattern attack, Transform origin)
+    public float GetLevelDuration()
     {
-        yield return attack.Execute(origin);
+        float maxTime = 0f;
 
-        completedAttacks++;
-        NotifyProgress();
+        foreach (var step in level.steps)
+        {
+            float endTime = step.delayBefore + step.attack.Duration;
+            if (endTime > maxTime)
+                maxTime = endTime;
+        }
 
-        if (completedAttacks >= totalAttacks)
-            OnLevelComplete?.Invoke();
-    }
-
-    private void NotifyProgress()
-    {
-        OnProgressChanged?.Invoke(Progress01);
+        return maxTime;
     }
 }
+
+ 

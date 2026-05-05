@@ -11,6 +11,8 @@ public class GoombaAttack : AttackPattern
     private float changeDirectionCooldown = 0.25f;
     private float axisThreshold = 0.1f;
 
+    public override float Duration => duration;
+
     public override IEnumerator Execute(Transform origin)
     {
         var enemy = Instantiate(enemyPrefab, origin.position, Quaternion.identity);
