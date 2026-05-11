@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FireStickAttack
   rootName: FireLeft
   firePrefab: {fileID: 5655410812053228092, guid: c59d9043627139f4f9da3e858771f76a, type: 3}
-  maxSegments: 10
+  maxSegments: 8
   spawnDelay: 0.5
   segmentSpacing: 0.7
   rotationSpeed: 120

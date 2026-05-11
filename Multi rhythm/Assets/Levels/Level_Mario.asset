@@ -17,17 +17,32 @@ MonoBehaviour:
     delayBefore: 0
     spawnPosition: 02000000
   - attack: {fileID: 11400000, guid: aea1c01cac1ef7048bd89924f5e536e8, type: 2}
-    delayBefore: 5
+    delayBefore: 7
     spawnPosition: 10000000
   - attack: {fileID: 11400000, guid: 70eee7312bb1ab24197ee1d12f5eb2fc, type: 2}
-    delayBefore: 5
+    delayBefore: 7
     spawnPosition: 10000000
   - attack: {fileID: 11400000, guid: 6201baf24dc01534e86123cc5cca22b5, type: 2}
-    delayBefore: 10
-    spawnPosition: 04000000
-  - attack: {fileID: 11400000, guid: e1133dff9847430409ff569f88c648a1, type: 2}
     delayBefore: 15
+    spawnPosition: 04000000
+  - attack: {fileID: 11400000, guid: a532fdfd4863f414cbdc7732cbd95809, type: 2}
+    delayBefore: 18
     spawnPosition: 01000000
   - attack: {fileID: 11400000, guid: ad3a96aeadd062042bb2f8a82c974d01, type: 2}
-    delayBefore: 0
+    delayBefore: 22
+    spawnPosition: 10000000
+  - attack: {fileID: 11400000, guid: 5d4a920ae65a9334a9cdfd3cd87aadf3, type: 2}
+    delayBefore: 33
+    spawnPosition: 10000000
+  - attack: {fileID: 11400000, guid: d0ce6f70f8e0fa84b8fe50cb5548c7eb, type: 2}
+    delayBefore: 32
+    spawnPosition: 02000000
+  - attack: {fileID: 11400000, guid: 11d597c7546b639439543c226d4a482f, type: 2}
+    delayBefore: 40
+    spawnPosition: 02000000
+  - attack: {fileID: 11400000, guid: ed3cd06e642604949aec135b3bbff092, type: 2}
+    delayBefore: 45
+    spawnPosition: 10000000
+  - attack: {fileID: 11400000, guid: 42537770b27292a44aa024d000c0676c, type: 2}
+    delayBefore: 45
     spawnPosition: 10000000
